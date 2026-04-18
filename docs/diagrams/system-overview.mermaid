@@ -1,0 +1,23 @@
+graph LR
+    subgraph Phone["📱 Android Phone"]
+        App["MediaSync App\n(Kotlin)"]
+        Poweramp["Poweramp\n(playback)"]
+        SyncPhone["Syncthing-Fork\n(receive-only)"]
+    end
+
+    subgraph Pi["🖥️ Raspberry Pi 4"]
+        API["FastAPI\n:8000"]
+        SyncPi["Syncthing\n:8384 (send-only)"]
+        DB[("SQLite\nmetadata.db")]
+        Media["/mnt/usb-ssd/media"]
+    end
+
+    App -->|"REST API\n(Tailscale)"| API
+    API --- DB
+    API --> Media
+    SyncPi --> Media
+    SyncPi -->|"WiFi sync"| SyncPhone
+    SyncPhone --> Poweramp
+
+    style Phone fill:#e8f4f8,stroke:#2196F3
+    style Pi fill:#f0f4e8,stroke:#4CAF50

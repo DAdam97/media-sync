@@ -1,0 +1,34 @@
+graph TD
+    subgraph Routers["Routers (HTTP layer)"]
+        R1["/api/downloads"]
+        R2["/api/library"]
+        R3["/api/playlists"]
+        R4["/api/health\n/api/stats"]
+    end
+
+    subgraph Services["Services (business logic)"]
+        S1["downloader.py\n(yt-dlp wrapper)"]
+        S2["metadata.py\n(mutagen ID3)"]
+        S3["feature_extractor.py\n(librosa)"]
+        S4["classifier.py\n(TF Lite)"]
+        S5["playlist_generator.py\n(.m3u export)"]
+    end
+
+    subgraph Storage["Storage"]
+        DB[("SQLite\nmetadata.db")]
+        FS["File system\n/mnt/media/music/\n/mnt/media/playlists/"]
+        ML["TF Lite models\n.tflite files"]
+    end
+
+    R1 --> S1
+    S1 --> S2
+    S2 --> DB
+    S2 --> FS
+    S1 --> S3
+    S3 --> S4
+    S4 --> ML
+    S4 --> DB
+    R2 --> DB
+    R3 --> S5
+    S5 --> FS
+    R3 --> DB
