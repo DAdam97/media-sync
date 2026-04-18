@@ -3,9 +3,10 @@ from fastapi.middleware.cors import CORSMiddleware
 from fastapi.security import HTTPAuthorizationCredentials, HTTPBearer
 
 from config import settings
+from database import init_db
 from routers import downloads, library, playlists
 
-app = FastAPI(title="MediaSync", version="0.1.0")
+app = FastAPI(title="MediaSync", version="0.1.0", on_startup=[init_db])
 
 app.add_middleware(
     CORSMiddleware,
