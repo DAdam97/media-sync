@@ -1,3 +1,5 @@
+from contextlib import asynccontextmanager
+
 from fastapi import Depends, FastAPI, HTTPException, Security
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.security import HTTPAuthorizationCredentials, HTTPBearer
@@ -6,7 +8,14 @@ from config import settings
 from database import init_db
 from routers import downloads, library, playlists
 
-app = FastAPI(title="MediaSync", version="0.1.0", on_startup=[init_db])
+
+@asynccontextmanager
+async def lifespan(app: FastAPI):
+    init_db()
+    yield
+
+
+app = FastAPI(title="MediaSync", version="0.1.0", lifespan=lifespan)
 
 app.add_middleware(
     CORSMiddleware,

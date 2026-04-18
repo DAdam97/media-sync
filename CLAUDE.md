@@ -451,11 +451,11 @@ volumes:
 - [ ] Backend unit test completion (target: >80% coverage)
 - [ ] Android UI tests (Espresso)
 - [ ] Performance benchmarks (classifier accuracy, sync time)
-- [ ] Thesis writing: architecture, implementation, testing chapters
+- [ ] Write project documentation (architecture, implementation, testing)
 - [ ] Finalize UML diagrams
 
 ### Week 8 — Wrap Up
-- [ ] Finish thesis (bibliography, summary)
+- [ ] Finalize project documentation
 - [ ] Prepare presentation slides
 - [ ] Demo rehearsal (live demo practice)
 - [ ] Code cleanup, finalize README
