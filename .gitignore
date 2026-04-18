@@ -1,0 +1,32 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+.env
+venv/
+.venv/
+.mypy_cache/
+.ruff_cache/
+*.db
+*.sqlite
+
+# ML data and models
+ml/data/
+backend/models/*.tflite
+
+# Android
+.gradle/
+build/
+*.apk
+*.aab
+local.properties
+.idea/
+*.iml
+
+# General
+.DS_Store
+*.log
+Thumbs.db
+
+# Wiki (local only — for Claude Code + Obsidian)
+wiki/
