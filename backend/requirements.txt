@@ -1,0 +1,15 @@
+fastapi==0.115.12
+uvicorn[standard]==0.34.0
+pydantic==2.11.3
+
+# Download
+yt-dlp==2025.3.31
+mutagen==1.47.0
+
+# Audio / ML
+librosa==0.10.2
+numpy==1.26.4
+tflite-runtime==2.14.0
+
+# HTTP (MusicBrainz best-effort lookups)
+requests==2.32.3
